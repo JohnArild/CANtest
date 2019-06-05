@@ -1,0 +1,11 @@
+#include "../Inc/stm32f103x6.h"
+
+int main(void)
+{
+	RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
+	GPIOB->CRL |= GPIO_CRL_MODE7_1;
+	GPIOB->CRL |= GPIO_CRL_CNF7_0;
+	GPIOB->BRR |= GPIO_BRR_BR7;
+	GPIOB->BSRR |= GPIO_BSRR_BR7;
+	return 0;
+}

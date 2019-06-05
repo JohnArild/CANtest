@@ -1,0 +1,8 @@
+#define STM32F103x6
+
+#include "stm32f103x6.h"
+
+int main(void)
+{
+	return 0;
+}
