@@ -20,11 +20,29 @@ int main(void)
 	RCC->CR &= ~(RCC_CR_HSION); // Turn off internal clock
 
 	//CAN setup. Using PA11 and PA12
+	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN; //Turn on Port B
 	RCC->APB1ENR |= RCC_APB1ENR_CAN1EN; // Enable CAN clock
-	GPIOA->CRH &= ~(GPIO_CRH_MODE11_0); // Set PA11 as alt mode.
-	GPIOA->CRH |= GPIO_CRH_MODE11_1;
-	GPIOA->CRH &= ~(GPIO_CRH_MODE12_0); // Set PA12 as alt mode.
-	GPIOA->CRH |= GPIO_CRH_MODE12_1;
+	GPIOA->CRH &= ~(0xF << GPIO_CRH_MODE12_Pos); //Clear
+	GPIOA->CRH |= GPIO_CRH_MODE12_1; //Output mode, max speed 10 MHz.
+	GPIOA->CRH |= GPIO_CRH_CNF12_1; // Alternate function output Push-pull
+	//CAN1->BTR |= CAN_BTR_LBKM; // Debug mode
+
+	//Create CAN message for testing:
+	uint16_t CAN_ID = 0x123;
+	uint32_t TIxR = 0;
+	TIxR = (CAN_ID << 21); // move 11bit ID to bit 21-31
+	CAN1->MCR |= CAN_MCR_INRQ;
+	while(!((CAN1->MSR & CAN_MSR_INAK) == CAN_MSR_INAK)){;} // Wait for INAK to become ready
+	CAN1->MCR &= ~(CAN_MCR_DBF); // Let CAN work in debug mode
+	CAN1->MCR &= ~(CAN_MCR_SLEEP); // Wake CAN
+	CAN1->MCR |= CAN_MCR_TXFP; // Transmit FIFO priority
+	CAN1->BTR |= 0x17; // 24MHz/(1+23) = 1MHz
+	CAN1->sTxMailBox[0].TDTR |= 0x4;
+	CAN1->sTxMailBox[0].TIR = TIxR;
+	uint32_t CAN_Data = 0xDEADBEEF;
+	CAN1->sTxMailBox[0].TDLR = CAN_Data;
+	CAN1->MCR &= ~(CAN_MCR_INRQ);
+	CAN1->sTxMailBox[0].TIR |= CAN_TI0R_TXRQ;
 
 	//GPIO for debugging
 	RCC->APB2ENR |= RCC_APB2ENR_IOPBEN; //Turn on Port B
