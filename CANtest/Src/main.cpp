@@ -5,20 +5,28 @@ void waitLoop(int loops);
 int main(void)
 {
 	// Clock setup. External 8MHz.
-	FLASH->ACR |= FLASH_ACR_LATENCY_1; //Set Flash Latency to 1 for 48MHz  2 for 72MHz
+	FLASH->ACR |= FLASH_ACR_LATENCY_1; //Set Flash Latency to 1 for 48MHz (2 for 72MHz)
 	FLASH->ACR |= FLASH_ACR_PRFTBE; //Enable prefetch buffer
 	RCC->APB2ENR |= RCC_APB2ENR_IOPDEN; // HSE is on PD0 and PD1
 	AFIO->MAPR &= ~(AFIO_MAPR_PD01_REMAP); // Set PD0 as OSC_In and PD1 as OSC_out
-	RCC->CR |= RCC_CR_HSEON; // Turn in external clock input
-	while(!((RCC->CR & RCC_CR_HSERDY)== RCC_CR_HSERDY)){;}
-	RCC->CFGR |= RCC_CFGR_PLLMULL6; // Set PLL to x6 (set to 9 for 72MHz)
-	RCC->CFGR |= RCC_CFGR_PPRE1_DIV2; // Set APB1 devider to /2
+	RCC->CFGR |= RCC_CFGR_PLLMULL6; // Set PLL to x6 for 48MHz (set to 9 for 72MHz)
+	RCC->CFGR |= RCC_CFGR_PPRE1_DIV2; // Set APB1 divider to /2
 	RCC->CFGR |= RCC_CFGR_PLLSRC; // Set PREDIV1 as source for PLL
+	RCC->CR |= RCC_CR_HSEON; // Turn in external clock input
+	while(!((RCC->CR & RCC_CR_HSERDY)== RCC_CR_HSERDY)){;} // Wait for HSE to become ready
 	RCC->CR |= RCC_CR_PLLON; // Turn on PLL
 	RCC->CFGR |= RCC_CFGR_SW_PLL; // Select PLL for SYSCLOCK
 	RCC->CFGR |= RCC_CFGR_MCO_SYSCLK; // Select sysclock for clock input
 	RCC->CR &= ~(RCC_CR_HSION); // Turn off internal clock
 
+	//CAN setup. Using PA11 and PA12
+	RCC->APB1ENR |= RCC_APB1ENR_CAN1EN; // Enable CAN clock
+	GPIOA->CRH &= ~(GPIO_CRH_MODE11_0); // Set PA11 as alt mode.
+	GPIOA->CRH |= GPIO_CRH_MODE11_1;
+	GPIOA->CRH &= ~(GPIO_CRH_MODE12_0); // Set PA12 as alt mode.
+	GPIOA->CRH |= GPIO_CRH_MODE12_1;
+
+	//GPIO for debugging
 	RCC->APB2ENR |= RCC_APB2ENR_IOPBEN; //Turn on Port B
 	GPIOB->CRL |= GPIO_CRL_MODE7_1; 	//Set PB7 as output
 
