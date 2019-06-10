@@ -45,15 +45,15 @@ int main(void)
 	CAN1->sTxMailBox[0].TIR |= CAN_TI0R_TXRQ;
 
 	//GPIO for debugging
-	RCC->APB2ENR |= RCC_APB2ENR_IOPBEN; //Turn on Port B
-	GPIOB->CRH |= GPIO_CRH_MODE12; 	//Set PB7 as output
+	RCC->APB2ENR |= RCC_APB2ENR_IOPCEN; //Turn on Port B
+	GPIOC->CRH |= GPIO_CRH_MODE13; 	//Set PB7 as output
 	
 
 	while(1)
 	{
-		GPIOB->BSRR |= GPIO_BSRR_BR12; //Turn off PB7
+		GPIOC->BSRR |= GPIO_BSRR_BR13; //Turn off PB7
 		waitLoop(0xFE);
-		GPIOB->BSRR |= GPIO_BSRR_BS12; //Turn on PB7
+		GPIOC->BSRR |= GPIO_BSRR_BS13; //Turn on PB7
 		waitLoop(0xFE);
 	}
 

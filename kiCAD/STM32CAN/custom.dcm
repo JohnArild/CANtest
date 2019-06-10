@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP si7942
+D Dual N-Channel 100-V (D-S) MOSFET
+K Dual N-Channel MOSFET
+F https://no.mouser.com/datasheet/2/427/72118-241305.pdf
+$ENDCMP
+#
+#End Doc Library

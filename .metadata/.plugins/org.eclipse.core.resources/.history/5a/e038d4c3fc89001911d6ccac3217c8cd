@@ -26,7 +26,6 @@ int main(void)
 	GPIOA->CRH |= GPIO_CRH_MODE12_1; //Output mode, max speed 10 MHz.
 	GPIOA->CRH |= GPIO_CRH_CNF12_1; // Alternate function output Push-pull
 	CAN1->BTR |= CAN_BTR_LBKM; // Debug mode
-	CAN1->MCR |= CAN_MCR_NART; // No retransmitt
 
 	//Create CAN message for testing:
 	uint16_t CAN_ID = 0x123;
@@ -37,6 +36,7 @@ int main(void)
 	CAN1->MCR &= ~(CAN_MCR_DBF); // Let CAN work in debug mode
 	CAN1->MCR &= ~(CAN_MCR_SLEEP); // Wake CAN
 	CAN1->MCR |= CAN_MCR_TXFP; // Transmit FIFO priority
+	CAN1->BTR |= 0x17; // 24MHz/(1+23) = 1MHz
 	CAN1->sTxMailBox[0].TDTR |= 0x4;
 	CAN1->sTxMailBox[0].TIR = TIxR;
 	uint32_t CAN_Data = 0xDEADBEEF;
@@ -46,14 +46,13 @@ int main(void)
 
 	//GPIO for debugging
 	RCC->APB2ENR |= RCC_APB2ENR_IOPBEN; //Turn on Port B
-	GPIOB->CRH |= GPIO_CRH_MODE12; 	//Set PB7 as output
-	
+	GPIOB->CRL |= GPIO_CRL_MODE7_1; 	//Set PB7 as output
 
 	while(1)
 	{
-		GPIOB->BSRR |= GPIO_BSRR_BR12; //Turn off PB7
+		GPIOB->BSRR |= GPIO_BSRR_BR7; //Turn off PB7
 		waitLoop(0xFE);
-		GPIOB->BSRR |= GPIO_BSRR_BS12; //Turn on PB7
+		GPIOB->BSRR |= GPIO_BSRR_BS7; //Turn on PB7
 		waitLoop(0xFE);
 	}
 

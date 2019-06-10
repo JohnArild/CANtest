@@ -1,0 +1,21 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP TP0610L
+D -0.18A Id, -60V Vds, P-Channel MOSFET, TO-92
+K P-Channel MOSFET
+F http://www.vishay.com/docs/70209/70209.pdf
+$ENDCMP
+#
+$CMP VP0610L
+D -0.18A Id, -60V Vds, P-Channel MOSFET, TO-92
+K P-Channel MOSFET
+F http://www.vishay.com/docs/70209/70209.pdf
+$ENDCMP
+#
+$CMP si7942
+D Dual N-Channel 100-V (D-S) MOSFET
+K Dual N-Channel MOSFET
+F https://no.mouser.com/datasheet/2/427/72118-241305.pdf
+$ENDCMP
+#
+#End Doc Library

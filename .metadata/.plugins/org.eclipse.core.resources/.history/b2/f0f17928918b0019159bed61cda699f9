@@ -53,7 +53,7 @@ int main(void)
 	{
 		GPIOB->BSRR |= GPIO_BSRR_BR12; //Turn off PB7
 		waitLoop(0xFE);
-		GPIOB->BSRR |= GPIO_BSRR_BS12; //Turn on PB7
+		GPIOC->BSRR |= GPIO_BSRR_BS12; //Turn on PB7
 		waitLoop(0xFE);
 	}
 

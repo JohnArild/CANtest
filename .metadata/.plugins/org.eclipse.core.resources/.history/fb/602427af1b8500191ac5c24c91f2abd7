@@ -1,8 +1,0 @@
-
-
-#include "stm32f103x6.h"
-
-int main(void)
-{
-	return 0;
-}
