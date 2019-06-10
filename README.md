@@ -1,6 +1,9 @@
 # CANtest
-This project is created to test CAN functionality on BluePill
+This project is created to test CAN functionality on STM32
+For initial testing, STM32F103C8T6 (Blue Pill) is used.
 
-Testboard is STM32F103C8T6 based BluePill.
+Custom board is being developed and is found in folder kiCad.
+
+This information will change when the code is changed to work on the new board.
 
 Released under BSD License, see file named LICENSE
