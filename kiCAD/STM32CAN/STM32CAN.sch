@@ -58,8 +58,6 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 	1    3100 2600
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2500 3200 2400 3200
 $Comp
 L power:GNDREF #PWR0103
 U 1 1 5D01DC7A
@@ -113,7 +111,7 @@ Text Label 4150 3100 2    50   ~ 0
 SDWIO
 Text Label 4150 3200 2    50   ~ 0
 SWCLK
-Text Label 2200 2350 0    50   ~ 0
+Text Label 2100 2100 0    50   ~ 0
 ~RESET
 Text Label 4150 2500 2    50   ~ 0
 SPI_NSS
@@ -162,21 +160,12 @@ F 3 "" H 2700 3750 50  0001 C CNN
 	1    2700 3750
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2900 3400 2700 3400
-Wire Wire Line
-	2700 3400 2700 3750
-Wire Wire Line
-	2400 3400 2700 3400
-Wire Wire Line
-	2400 3200 2400 3400
-Connection ~ 2700 3400
 $Comp
 L Device:C C5
 U 1 1 5D01F901
 P 2450 1750
 F 0 "C5" V 2198 1750 50  0000 C CNN
-F 1 "100nF" V 2289 1750 50  0000 C CNN
+F 1 "10nF" V 2289 1750 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric" H 2488 1600 50  0001 C CNN
 F 3 "~" H 2450 1750 50  0001 C CNN
 	1    2450 1750
@@ -370,33 +359,25 @@ F 3 "~" H 7850 5050 50  0001 C CNN
 	1    7850 5050
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	9000 2000 9000 2500
 $Comp
 L power:GNDREF #PWR0115
 U 1 1 5D0D2DBC
-P 9000 2500
-F 0 "#PWR0115" H 9000 2250 50  0001 C CNN
-F 1 "GNDREF" H 9005 2327 50  0000 C CNN
-F 2 "" H 9000 2500 50  0001 C CNN
-F 3 "" H 9000 2500 50  0001 C CNN
-	1    9000 2500
+P 8750 3000
+F 0 "#PWR0115" H 8750 2750 50  0001 C CNN
+F 1 "GNDREF" H 8755 2827 50  0000 C CNN
+F 2 "" H 8750 3000 50  0001 C CNN
+F 3 "" H 8750 3000 50  0001 C CNN
+	1    8750 3000
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	9000 2000 9650 2000
 Text Label 9100 2300 0    50   ~ 0
 PWR_RETURN
-Wire Notes Line
-	10550 2800 7000 2800
 Wire Wire Line
 	9650 2100 8850 2100
 Wire Wire Line
 	8850 2100 8850 2000
-Wire Wire Line
-	8850 2000 8600 2000
-Wire Wire Line
-	9650 2200 8600 2200
 Wire Wire Line
 	9100 2300 9650 2300
 Wire Wire Line
@@ -412,27 +393,6 @@ F 1 "DB9_Male" H 10130 1955 50  0000 L CNN
 F 2 "Connector_Dsub:DSUB-9_Male_Horizontal_P2.77x2.54mm_EdgePinOffset9.40mm" H 9950 2000 50  0001 C CNN
 F 3 " ~" H 9950 2000 50  0001 C CNN
 	1    9950 2000
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7800 1700 8100 1700
-Wire Wire Line
-	7200 2000 7600 2000
-Text Label 7200 2000 0    50   ~ 0
-CAN_RXD
-Wire Wire Line
-	7200 1900 7600 1900
-Text Label 7200 1900 0    50   ~ 0
-CAN_TXD
-$Comp
-L Interface_CAN_LIN:TCAN332 U2
-U 1 1 5D044387
-P 8100 2100
-F 0 "U2" H 8100 2681 50  0000 C CNN
-F 1 "TCAN332" H 8100 2590 50  0000 C CNN
-F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 8100 1600 50  0001 C CIN
-F 3 "http://www.ti.com/lit/ds/symlink/tcan337.pdf" H 8100 2100 50  0001 C CNN
-	1    8100 2100
 	1    0    0    -1  
 $EndComp
 Text Notes 9250 4050 0    50   ~ 0
@@ -508,51 +468,7 @@ F 3 "~" H 10100 4850 50  0001 C CNN
 	1    10100 4850
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:GNDREF #PWR0118
-U 1 1 5D05805C
-P 7150 1450
-F 0 "#PWR0118" H 7150 1200 50  0001 C CNN
-F 1 "GNDREF" H 7155 1277 50  0000 C CNN
-F 2 "" H 7150 1450 50  0001 C CNN
-F 3 "" H 7150 1450 50  0001 C CNN
-	1    7150 1450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C8
-U 1 1 5D0556B8
-P 7500 1250
-F 0 "C8" V 7248 1250 50  0000 C CNN
-F 1 "100nF" V 7339 1250 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 7538 1100 50  0001 C CNN
-F 3 "~" H 7500 1250 50  0001 C CNN
-	1    7500 1250
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GNDREF #PWR0102
-U 1 1 5CFA5310
-P 8100 2500
-F 0 "#PWR0102" H 8100 2250 50  0001 C CNN
-F 1 "GNDREF" H 8105 2327 50  0000 C CNN
-F 2 "" H 8100 2500 50  0001 C CNN
-F 3 "" H 8100 2500 50  0001 C CNN
-	1    8100 2500
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3.3V #PWR0119
-U 1 1 5CFED302
-P 7800 1050
-F 0 "#PWR0119" H 7800 900 50  0001 C CNN
-F 1 "+3.3V" H 7815 1223 50  0000 C CNN
-F 2 "" H 7800 1050 50  0001 C CNN
-F 3 "" H 7800 1050 50  0001 C CNN
-	1    7800 1050
-	1    0    0    -1  
-$EndComp
-Text Notes 7000 800  0    50   ~ 0
+Text Notes 6300 800  0    50   ~ 0
 CAN Transceiver
 $Comp
 L Device:R R1
@@ -587,7 +503,6 @@ F 3 "" H 4100 1750 50  0001 C CNN
 	1    4100 1750
 	1    0    0    -1  
 $EndComp
-Connection ~ 2900 1600
 $Comp
 L Device:C C1
 U 1 1 5D264B75
@@ -600,11 +515,6 @@ F 3 "~" H 3200 1750 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Connection ~ 3200 1600
-Wire Wire Line
-	3200 1600 2900 1600
-Wire Wire Line
-	3000 1900 3200 1900
-Connection ~ 3200 1900
 Wire Wire Line
 	3200 1900 3600 1900
 $Comp
@@ -632,27 +542,6 @@ Wire Wire Line
 	1700 3300 1950 3300
 Wire Wire Line
 	1950 2900 2500 2900
-$Comp
-L Device:R R4
-U 1 1 5D2B77E6
-P 2000 2200
-F 0 "R4" V 1793 2200 50  0000 C CNN
-F 1 "10k" V 1884 2200 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 1930 2200 50  0001 C CNN
-F 3 "~" H 2000 2200 50  0001 C CNN
-	1    2000 2200
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	1250 1600 1550 1600
-Wire Wire Line
-	2500 2100 2500 2200
-Wire Wire Line
-	2150 2200 2500 2200
-Wire Wire Line
-	1850 2200 1250 2200
-Wire Wire Line
-	1250 1600 1250 2200
 Wire Wire Line
 	3850 1450 3950 1450
 Wire Wire Line
@@ -662,10 +551,6 @@ Wire Wire Line
 Connection ~ 3950 1450
 Wire Wire Line
 	3950 1450 4100 1450
-Wire Wire Line
-	3250 1450 3200 1450
-Wire Wire Line
-	3200 1450 3200 1600
 Wire Wire Line
 	1550 1900 1550 1950
 $Comp
@@ -826,42 +711,183 @@ Wire Notes Line
 Text Notes 1000 5000 0    50   ~ 0
 Power Supply
 $Comp
+L Device:R R4
+U 1 1 5D05FAD3
+P 2250 3350
+F 0 "R4" V 2043 3350 50  0000 C CNN
+F 1 "10k" V 2134 3350 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2180 3350 50  0001 C CNN
+F 3 "~" H 2250 3350 50  0001 C CNN
+	1    2250 3350
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2250 3500 2700 3500
+Wire Wire Line
+	2900 3500 2900 3400
+Wire Wire Line
+	2700 3750 2700 3500
+Connection ~ 2700 3500
+Wire Wire Line
+	2700 3500 2900 3500
+Wire Wire Line
+	2250 3200 2500 3200
+Wire Wire Line
+	2500 2100 2100 2100
+Wire Wire Line
+	7100 1700 7400 1700
+Wire Wire Line
+	6500 2000 6900 2000
+Text Label 6500 2000 0    50   ~ 0
+CAN_RXD
+Wire Wire Line
+	6500 1900 6900 1900
+Text Label 6500 1900 0    50   ~ 0
+CAN_TXD
+$Comp
+L Interface_CAN_LIN:TCAN332 U2
+U 1 1 5D044387
+P 7400 2100
+F 0 "U2" H 7400 2681 50  0000 C CNN
+F 1 "TCAN332" H 7400 2590 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 7400 1600 50  0001 C CIN
+F 3 "http://www.ti.com/lit/ds/symlink/tcan337.pdf" H 7400 2100 50  0001 C CNN
+	1    7400 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR0118
+U 1 1 5D05805C
+P 6450 1450
+F 0 "#PWR0118" H 6450 1200 50  0001 C CNN
+F 1 "GNDREF" H 6455 1277 50  0000 C CNN
+F 2 "" H 6450 1450 50  0001 C CNN
+F 3 "" H 6450 1450 50  0001 C CNN
+	1    6450 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C8
+U 1 1 5D0556B8
+P 6800 1250
+F 0 "C8" V 6548 1250 50  0000 C CNN
+F 1 "100nF" V 6639 1250 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6838 1100 50  0001 C CNN
+F 3 "~" H 6800 1250 50  0001 C CNN
+	1    6800 1250
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GNDREF #PWR0102
+U 1 1 5CFA5310
+P 7400 2500
+F 0 "#PWR0102" H 7400 2250 50  0001 C CNN
+F 1 "GNDREF" H 7405 2327 50  0000 C CNN
+F 2 "" H 7400 2500 50  0001 C CNN
+F 3 "" H 7400 2500 50  0001 C CNN
+	1    7400 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0119
+U 1 1 5CFED302
+P 7100 1050
+F 0 "#PWR0119" H 7100 900 50  0001 C CNN
+F 1 "+3.3V" H 7115 1223 50  0000 C CNN
+F 2 "" H 7100 1050 50  0001 C CNN
+F 3 "" H 7100 1050 50  0001 C CNN
+	1    7100 1050
+	1    0    0    -1  
+$EndComp
+$Comp
 L Device:C C11
 U 1 1 5CFF2DCD
-P 7500 1650
-F 0 "C11" V 7248 1650 50  0000 C CNN
-F 1 "1uF" V 7339 1650 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 7538 1500 50  0001 C CNN
-F 3 "~" H 7500 1650 50  0001 C CNN
-	1    7500 1650
+P 6800 1650
+F 0 "C11" V 6548 1650 50  0000 C CNN
+F 1 "1uF" V 6639 1650 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric" H 6838 1500 50  0001 C CNN
+F 3 "~" H 6800 1650 50  0001 C CNN
+	1    6800 1650
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	7800 1050 7800 1250
+	7100 1050 7100 1250
 Wire Wire Line
-	7650 1650 7650 1250
+	6950 1650 6950 1250
 Wire Wire Line
-	7650 1250 7800 1250
-Connection ~ 7650 1250
-Connection ~ 7800 1250
+	6950 1250 7100 1250
+Connection ~ 6950 1250
+Connection ~ 7100 1250
 Wire Wire Line
-	7800 1250 7800 1700
+	7100 1250 7100 1700
 Wire Wire Line
-	7350 1250 7150 1250
+	6650 1250 6450 1250
 Wire Wire Line
-	7150 1450 7150 1250
+	6450 1450 6450 1250
 Wire Wire Line
-	7350 1650 7350 1250
-Connection ~ 7350 1250
+	6650 1650 6650 1250
+Connection ~ 6650 1250
+$Comp
+L Power_Protection:NUP2105L D3
+U 1 1 5D0995EE
+P 8300 2550
+F 0 "D3" H 8505 2596 50  0000 L CNN
+F 1 "ESDCAN03-2BWY " H 8505 2505 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-323_SC-70" H 8525 2500 50  0001 L CNN
+F 3 "https://no.mouser.com/datasheet/2/389/esdcan02-2bwy-954689.pdf" H 8425 2675 50  0001 C CNN
+	1    8300 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7900 2200 8200 2200
+Wire Wire Line
+	8200 2350 8200 2200
+Connection ~ 8200 2200
+Wire Wire Line
+	8200 2200 9650 2200
+Wire Wire Line
+	7900 2000 8400 2000
+Wire Wire Line
+	9000 2000 9000 2750
+Wire Wire Line
+	8400 2350 8400 2000
+Connection ~ 8400 2000
+Wire Wire Line
+	8400 2000 8850 2000
 Wire Notes Line
-	7000 800  10550 800 
+	10550 3250 6300 3250
 Wire Notes Line
-	7000 800  7000 2800
+	6300 3250 6300 800 
 Wire Notes Line
-	10550 800  10550 2800
+	6300 800  10550 800 
+Wire Notes Line
+	10550 800  10550 3250
 Wire Wire Line
-	2500 2200 2500 2350
+	8300 2750 8750 2750
 Wire Wire Line
-	2500 2350 2200 2350
-Connection ~ 2500 2200
+	8750 3000 8750 2750
+Connection ~ 8750 2750
+Wire Wire Line
+	8750 2750 9000 2750
+Wire Wire Line
+	3000 1900 3000 1600
+Wire Wire Line
+	3000 1600 3200 1600
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5D06C220
+P 3000 1450
+F 0 "#PWR?" H 3000 1300 50  0001 C CNN
+F 1 "+3.3V" H 3015 1623 50  0000 C CNN
+F 2 "" H 3000 1450 50  0001 C CNN
+F 3 "" H 3000 1450 50  0001 C CNN
+	1    3000 1450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3000 1450 3000 1600
+Connection ~ 3000 1600
+Wire Wire Line
+	3000 1450 3250 1450
+Connection ~ 3000 1450
 $EndSCHEMATC
