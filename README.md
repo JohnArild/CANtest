@@ -1,4 +1,7 @@
 # CANtest
+
+![alt text](https://github.com/JohnArild/CANtest/blob/master/STM32CAN.png?raw=true "PCB Render")
+
 This project is created to test CAN functionality on STM32
 For initial testing, STM32F103C8T6 (Blue Pill) is used.
 
