@@ -35,15 +35,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  15 .debug_ranges 00000050  00000000  00000000  00011268  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  00011002  00000000  00000000  000112b8  2**0
+ 16 .debug_macro  000104d4  00000000  00000000  000112b8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   00000858  00000000  00000000  000222ba  2**0
+ 17 .debug_line   00000869  00000000  00000000  0002178c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    00054e96  00000000  00000000  00022b12  2**0
+ 18 .debug_str    00054e96  00000000  00000000  00021ff5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  000779a8  2**0
+ 19 .comment      0000007b  00000000  00000000  00076e8b  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000000dc  00000000  00000000  00077a24  2**2
+ 20 .debug_frame  000000dc  00000000  00000000  00076f08  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -77,7 +77,7 @@ Disassembly of section .text:
  800016c:	080004a8 	.word	0x080004a8
 
 08000170 <main>:
-#include "../Inc/stm32f103x6.h"
+#include "bsp.h"
 
 void waitLoop(int loops);
 

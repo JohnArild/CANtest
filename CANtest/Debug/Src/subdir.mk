@@ -9,9 +9,11 @@ C_SRCS += \
 ../Src/system_stm32f1xx.c 
 
 CPP_SRCS += \
+../Src/bsp.cpp \
 ../Src/main.cpp 
 
 OBJS += \
+./Src/bsp.o \
 ./Src/main.o \
 ./Src/syscalls.o \
 ./Src/sysmem.o \
@@ -23,10 +25,13 @@ C_DEPS += \
 ./Src/system_stm32f1xx.d 
 
 CPP_DEPS += \
+./Src/bsp.d \
 ./Src/main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
+Src/bsp.o: ../Src/bsp.cpp
+	arm-none-eabi-g++ "$<" -mcpu=cortex-m3 -std=gnu++14 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Src/bsp.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Src/main.o: ../Src/main.cpp
 	arm-none-eabi-g++ "$<" -mcpu=cortex-m3 -std=gnu++14 -g3 -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -DDEBUG -c -I../Inc -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Src/syscalls.o: ../Src/syscalls.c

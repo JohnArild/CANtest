@@ -1,0 +1,5 @@
+bsp.cpp:3:5:int BSP_BluePill::initilize()	16	static
+bsp.cpp:11:5:int BSP_BluePill::MCUspeed_48MHz()	16	static
+bsp.cpp:15:5:int BSP_BluePill::setup_GPIO()	16	static
+bsp.cpp:19:5:int BSP_BluePill::setup_CAN()	16	static
+bsp.cpp:23:5:int BSP_BluePill::setup_SPI()	16	static
