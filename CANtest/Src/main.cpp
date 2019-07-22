@@ -23,11 +23,12 @@ int main(void)
 	//CAN setup. Using PA11 and PA12
 	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN; //Turn on Port B
 	RCC->APB1ENR |= RCC_APB1ENR_CAN1EN; // Enable CAN clock
+	//CAN1->BTR |= 23U;
 	GPIOA->CRH &= ~(0xF << GPIO_CRH_MODE12_Pos); //Clear
 	GPIOA->CRH |= GPIO_CRH_MODE12_1; //Output mode, max speed 10 MHz.
 	GPIOA->CRH |= GPIO_CRH_CNF12_1; // Alternate function output Push-pull
 	CAN1->BTR |= CAN_BTR_LBKM; // Debug mode
-	CAN1->MCR |= CAN_MCR_NART; // No retransmitt
+	//CAN1->MCR |= CAN_MCR_NART; // No retransmitt
 
 	//Create CAN message for testing:
 	uint16_t CAN_ID = 0x123;

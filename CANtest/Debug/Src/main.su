@@ -1,2 +1,2 @@
 main.cpp:6:5:int main()	24	static
-main.cpp:64:6:void waitLoop(int)	24	static
+main.cpp:65:6:void waitLoop(int)	24	static
