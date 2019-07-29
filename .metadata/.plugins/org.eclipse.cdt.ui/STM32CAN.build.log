@@ -1,17 +1,10 @@
-19:14:55 **** Incremental Build of configuration Debug for project STM32CAN ****
+21:05:35 **** Incremental Build of configuration Debug for project STM32CAN ****
 make -j8 all 
-arm-none-eabi-g++ "../Src/main.cpp" -mcpu=cortex-m0 -std=gnu++14 -g3 -DSTM32F042F6Px -DSTM32 -DSTM32F0 -DDEBUG -c -I../Inc -O0 -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
-arm-none-eabi-g++ -o "STM32CAN.elf" @"objects.list"   -mcpu=cortex-m0 -T"C:\Users\John\STM32CubeIDE\workspace_1.0.0\STM32CAN\STM32F042F6PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32CAN.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: STM32CAN.elf
- 
-arm-none-eabi-objdump -h -S  STM32CAN.elf  > "STM32CAN.list"
 arm-none-eabi-size   STM32CAN.elf 
    text	   data	    bss	    dec	    hex	filename
-    456	      8	   1568	   2032	    7f0	STM32CAN.elf
+    904	      8	   1568	   2480	    9b0	STM32CAN.elf
 Finished building: default.size.stdout
  
-Finished building: STM32CAN.list
- 
 
-19:14:56 Build Finished. 0 errors, 0 warnings. (took 728ms)
+21:05:36 Build Finished. 0 errors, 0 warnings. (took 416ms)
 

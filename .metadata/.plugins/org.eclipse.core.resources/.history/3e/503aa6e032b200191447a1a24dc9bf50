@@ -1,0 +1,42 @@
+/**
+  ******************************************************************************
+  * @file    BSP.cpp
+  * @author  John Arild Lolland
+  ******************************************************************************
+*/
+
+#include "BSP.h"
+
+int BSP_STM32CAN::initilize (){
+    BSP_STM32CAN::MCUspeed_48MHz();
+	BSP_STM32CAN::setup_GPIO ();
+	BSP_STM32CAN::setup_CAN ();
+	BSP_STM32CAN::setup_SPI ();
+    return 0;
+}
+
+int BSP_STM32CAN::MCUspeed_48MHz (){
+	FLASH->ACR |= FLASH_ACR_LATENCY; // One wait-state for 48MHz operation
+	FLASH->ACR |= FLASH_ACR_PRFTBE; // Prefetch buffer enable
+	RCC->AHBENR |= RCC_AHBENR_GPIOFEN; // External crystal is on Port F
+
+    return 0;
+}
+
+int BSP_STM32CAN::setup_GPIO (){
+    return 0;
+}
+
+int BSP_STM32CAN::setup_CAN (){
+    return 0;
+}
+
+int BSP_STM32CAN::setup_SPI (){
+    return 0;
+}
+
+int BSP_STM32CAN::configLED(){
+	RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
+	GPIOA->MODER |= GPIO_MODER_MODER3_0;
+	return 0;
+}
