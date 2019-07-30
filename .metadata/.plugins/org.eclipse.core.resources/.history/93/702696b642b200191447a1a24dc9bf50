@@ -1,0 +1,63 @@
+/**
+  ******************************************************************************
+  * @file    BSP.cpp
+  * @author  John Arild Lolland
+  ******************************************************************************
+*/
+
+#include "BSP.h"
+
+int BSP_STM32CAN::initilize (){
+    BSP_STM32CAN::MCUspeed_48MHz();
+	BSP_STM32CAN::setup_GPIO ();
+	BSP_STM32CAN::setup_CAN ();
+	BSP_STM32CAN::setup_SPI ();
+    return 0;
+}
+
+int BSP_STM32CAN::MCUspeed_48MHz (){
+	FLASH->ACR |= FLASH_ACR_LATENCY; // One wait-state for 48MHz operation
+	FLASH->ACR |= FLASH_ACR_PRFTBE; // Prefetch buffer enable
+	RCC->AHBENR |= RCC_AHBENR_GPIOFEN; // External crystal is on Port F
+	RCC->CFGR |= RCC_CFGR_PLLMUL6; // Set PLL to x6 for 48MHz
+	RCC->CFGR |= RCC_CFGR_PLLSRC_HSE_PREDIV; // HSE/PREDIV selected as PLL input clock
+	RCC->CR |= RCC_CR_HSEON; // Turn in external clock input
+	while(!((RCC->CR & RCC_CR_HSERDY)== RCC_CR_HSERDY)){;} // wait for HSE to be ready
+	RCC->CR |= RCC_CR_PLLON;
+	while(!((RCC->CR & RCC_CR_PLLRDY)== RCC_CR_PLLRDY)){;} // wait for PLL to be ready
+	RCC->CFGR |= RCC_CFGR_SW_PLL; // Select PLL for SYSCLOCK
+    return 0;
+}
+
+int BSP_STM32CAN::setup_GPIO (){
+	// Turn on and configure Port A
+	RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
+	RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
+	GPIOB->MODER |= GPIO_MODER_MODER1_0; // MCU_IO0 (output)
+	GPIOA->MODER |= GPIO_MODER_MODER0_0; // MCU_IO1 (output)
+	GPIOA->MODER |= GPIO_MODER_MODER1_0; // MCU_IO2 (output)
+	GPIOA->MODER |= GPIO_MODER_MODER2_0; // MCU_IO3 (output)
+	GPIOA->MODER |= GPIO_MODER_MODER3_0; // MCU_IO4 (output)
+
+	GPIOA->MODER |= GPIO_MODER_MODER4_1; // SPI_NSS (alternative)
+	GPIOA->MODER |= GPIO_MODER_MODER5_1; // SPI_SCK (alternative)
+	GPIOA->MODER |= GPIO_MODER_MODER6_1; // SPI_MISO (alternative)
+	GPIOA->MODER |= GPIO_MODER_MODER7_1; // SPI_MOSI (alternative)
+
+	SYSCFG->CFGR1 |= SYSCFG_CFGR1_PA11_PA12_RMP; // Remap (pin pair PA11/12 mapped instead of PA9/10)
+	GPIOA->MODER |= GPIO_MODER_MODER11_1; // CAN_RXD (alternative)
+	GPIOA->MODER |= GPIO_MODER_MODER12_1; // CAN_TXD (alternative)
+
+	GPIOA->AFR[0] |= GPIO_AFRL_AFSEL4;
+
+
+    return 0;
+}
+
+int BSP_STM32CAN::setup_CAN (){
+    return 0;
+}
+
+int BSP_STM32CAN::setup_SPI (){
+    return 0;
+}

@@ -1,5 +1,5 @@
 BSP.cpp:10:5:int BSP_STM32CAN::initilize()	16	static
 BSP.cpp:18:5:int BSP_STM32CAN::MCUspeed_48MHz()	16	static
 BSP.cpp:32:5:int BSP_STM32CAN::setup_GPIO()	16	static
-BSP.cpp:38:5:int BSP_STM32CAN::setup_CAN()	16	static
-BSP.cpp:42:5:int BSP_STM32CAN::setup_SPI()	16	static
+BSP.cpp:46:5:int BSP_STM32CAN::setup_CAN()	32	static
+BSP.cpp:81:5:int BSP_STM32CAN::setup_SPI()	16	static
